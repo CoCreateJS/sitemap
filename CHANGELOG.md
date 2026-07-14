@@ -1,3 +1,18 @@
+# [1.5.0](https://github.com/CoCreate-app/CoCreate-sitemap/compare/v1.4.2...v1.5.0) (2026-07-14)
+
+
+### Bug Fixes
+
+* removed post install ([65d5ea3](https://github.com/CoCreate-app/CoCreate-sitemap/commit/65d5ea331baf439992fab9c1dce5a95d7210e32e))
+* semantic version handling. Reorganize .gitignore for improved clarity and structure ([63fa105](https://github.com/CoCreate-app/CoCreate-sitemap/commit/63fa105fe480103454c88f23d210585053190179))
+* update .gitignore to include package-lock.json and pnpm-lock.yaml ([9bab5d7](https://github.com/CoCreate-app/CoCreate-sitemap/commit/9bab5d740c465515755a5daac62a55c697375b3d))
+* update module export to ES6 syntax in release.config.js ([4096874](https://github.com/CoCreate-app/CoCreate-sitemap/commit/409687476de524c2bc1c88882031a8c43547c0e3))
+
+
+### Features
+
+* update package.json and refactor index.js to use ES modules ([a951277](https://github.com/CoCreate-app/CoCreate-sitemap/commit/a9512776ddd5f74bf9f9aab0ce947b80b210f6b7))
+
 ## [1.4.2](https://github.com/CoCreate-app/CoCreate-sitemap/compare/v1.4.1...v1.4.2) (2025-09-01)
 
 
