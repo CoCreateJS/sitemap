@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/CoCreate-app/CoCreate-sitemap/compare/v1.5.0...v1.6.0) (2026-07-17)
+
+
+### Features
+
+* update automated workflow and release configuration for improved semantic release handling ([fd3183f](https://github.com/CoCreate-app/CoCreate-sitemap/commit/fd3183f36440cdc6ef003611161bcec483c094f7))
+
 # [1.5.0](https://github.com/CoCreate-app/CoCreate-sitemap/compare/v1.4.2...v1.5.0) (2026-07-14)
 
 
