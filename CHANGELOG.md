@@ -1,3 +1,10 @@
+## [1.6.1](https://github.com/CoCreate-app/CoCreate-sitemap/compare/v1.6.0...v1.6.1) (2026-07-17)
+
+
+### Bug Fixes
+
+* bump dependencies ([898562c](https://github.com/CoCreate-app/CoCreate-sitemap/commit/898562ce06850982fc169c485a2d89c3f2ac2c4d))
+
 # [1.6.0](https://github.com/CoCreate-app/CoCreate-sitemap/compare/v1.5.0...v1.6.0) (2026-07-17)
 
 
