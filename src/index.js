@@ -3,7 +3,8 @@ import { parse } from "node-html-parser";
 /**
  * Clean, stateless functional entry point to check and verify a file against the sitemap.
  * All dependencies are passed explicitly via the parameters object.
- * * @param {Object} options
+ * 
+ * @param {Object} options
  * @param {Object} options.file - The file object being verified
  * @param {string} options.host - The active website hostname
  * @param {Object} options.crud - Crud database instance
@@ -22,7 +23,7 @@ export async function check({ file, host, crud }) {
         return;
 
     // Check if the file is HTML and contains a noindex meta or title tag
-    if (file["content-type"] === "text/html") {
+    if (file["content-type"] === "text/html" && file.src) {
         if (
             /<meta\s+name=["']robots["']\s+content=["'][^"']*noindex[^"']*["']/i.test(
                 file.src
@@ -364,7 +365,7 @@ async function getLastSitemapIndex(mainSitemap, filename) {
     } catch (err) {
         console.error(
             `Error determining next sitemap index for ${filename}:`,
-            err
+            `err`
         );
         return null;
     }
@@ -393,6 +394,8 @@ function checkSitemapXml(sitemap) {
 }
 
 function parseHtml(file) {
+    if (!file.src || typeof file.src !== "string") return;
+
     const dom = parse(file.src);
     const entries = dom.querySelectorAll('[sitemap="true"]');
 
@@ -432,7 +435,8 @@ function parseHtml(file) {
         } else if (entries[i].tagName === "VIDEO") {
             type = "video";
             query = "content_loc";
-            entryObject.content_loc = entries[i].src;
+            // FIXED: Using standard DOM query selector `.getAttribute("src")` instead of property `.src`
+            entryObject.content_loc = entries[i].getAttribute("src");
             entryObject.title =
                 entries[i].getAttribute("sitemap-title") ||
                 entries[i].getAttribute("title");
@@ -450,7 +454,7 @@ function parseHtml(file) {
             entryObject.title = entries[i].getAttribute("sitemap-title");
             if (!entryObject.title) {
                 const title = dom.querySelector("title");
-                entryObject.title = title ? title.text : "";
+                entryObject.title = title ? title.textContent : "";
             }
 
             entryObject.publication = {

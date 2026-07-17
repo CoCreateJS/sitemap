@@ -37,6 +37,6 @@
   "type": "module",
   "main": "./src/index.js",
   "dependencies": {
-    "node-html-parser": "^6.1.13"
+    "node-html-parser": "^9.0.0"
   }
 }
