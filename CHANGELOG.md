@@ -1,3 +1,10 @@
+## [1.6.2](https://github.com/CoCreate-app/CoCreate-sitemap/compare/v1.6.1...v1.6.2) (2026-07-18)
+
+
+### Bug Fixes
+
+* update node-html-parser dependency and improve HTML parsing logic ([ff8fb8b](https://github.com/CoCreate-app/CoCreate-sitemap/commit/ff8fb8b6e410c3ccbed01348def61bf06632c943))
+
 ## [1.6.1](https://github.com/CoCreate-app/CoCreate-sitemap/compare/v1.6.0...v1.6.1) (2026-07-17)
 
 
