@@ -1,3 +1,10 @@
+## [1.6.3](https://github.com/CoCreate-app/CoCreate-sitemap/compare/v1.6.2...v1.6.3) (2026-07-19)
+
+
+### Bug Fixes
+
+* set default branch to main ([3180448](https://github.com/CoCreate-app/CoCreate-sitemap/commit/31804481b9d3d7f06ecb44528d73680d038c7a6b))
+
 ## [1.6.2](https://github.com/CoCreate-app/CoCreate-sitemap/compare/v1.6.1...v1.6.2) (2026-07-18)
 
 
