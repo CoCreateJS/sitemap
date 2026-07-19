@@ -1,91 +1,149 @@
 # CoCreate-sitemap
 
-A simple sitemap component in vanilla javascript. Easily configured using HTML5 data-attributes and/or JavaScript API. Take it for a spin in our [playground!](https://cocreate.app/docs/sitemap)
+A high-performance, stateless, and functional JavaScript utility for automated XML sitemap generation and management. Engineered to run seamlessly across clustered environments, it dynamically builds, updates, and shards compliant sitemaps—including standard URLs, Images, Videos, and Google News metadata—by evaluating data modifications and parsing live HTML content.
 
-![min file size in bytes](https://img.badgesize.io/https://cdn.cocreate.app/sitemap/latest/CoCreate-sitemap.min.js?style=flat-square&label=minified&color=orange)
-![gzip file size in bytes](https://img.badgesize.io/https://cdn.cocreate.app/sitemap/latest/CoCreate-sitemap.min.js?compression=gzip&style=flat-square&label=gzip&color=yellow)
-![brotlifile size in bytes](https://img.badgesize.io/https://cdn.cocreate.app/sitemap/latest/CoCreate-sitemap.min.js?compression=brotli&style=flat-square&label=brotli)
-![GitHub latest release](https://img.shields.io/github/v/release/CoCreate-app/CoCreate-sitemap?style=flat-square)
-![GitHub](https://img.shields.io/github/license/CoCreate-app/CoCreate-sitemap?style=flat-square)
-![GitHub](https://img.shields.io/static/v1?style=flat-square&label=&message=Hiring&color=blueviolet)
+---
 
-![CoCreate-sitemap](https://cdn.cocreate.app/docs/CoCreate-sitemap.gif)
+## Table of Contents
 
-## [Docs & Demo](https://cocreate.app/docs/sitemap)
+* [Features](#features)
+* [Installation](#installation)
+* [Usage](#usage)
+* [How it Works](#how-it-works)
+* [HTML Schema Overrides](#html-schema-overrides)
+* [Announcements](#announcements)
+* [Roadmap](#roadmap)
+* [How to Contribute](#how-to-contribute)
+* [About](#about)
+* [License](#license)
 
-For a complete guide and working demo refer to the [doumentation](https://cocreate.app/docs/sitemap)
+---
 
-## CDN
+## Features
+
+* **Dynamic XML Automation:** Intercepts real-time document modifications to generate, update, or expand sitemaps instantly.
+* **Algorithmic Guardrails:** Automatically enforces strict SEO quality filters, bypassing draft states, private URLs, `noindex` directions, and views missing a valid `<title>`.
+* **Delta Freshness Verifications:** Prevents redundant database write cycles by skipping processing if the active map's `lastmod` timestamp is already up to date with the resource's latest modification.
+* **Hierarchical SEO Weighting:** Automatically derives page crawling priority values based on the layout depth of the URL path, eliminating manual weighting.
+* **Rich Media Graphing:** Scans internal HTML nodes decorated with `sitemap="true"` to extract context and populate independent tracking sets for Images, Videos, and Google News.
+* **Automated Index Sharding:** Monitors file buffers natively to cleanly split indexing paths when passing Google's 50,000 URL limit or MongoDB's 15MB document safety limit.
+
+---
+
+## Installation
+
+```bash
+npm install @cocreate/sitemap
+```
+
+> [!NOTE]
+> All core underlying dependencies (including parsing utilities like `node-html-parser`) are managed natively and installed automatically.
+
+---
+
+## Usage
+
+### JavaScript API
+
+Inject your runtime context (`file`, `host`, and your decoupled `crud` database engine) into the stateless `check` entry point:
+
+```javascript
+import { check } from '@cocreate/sitemap';
+
+const fileContext = {
+  "content-type": "text/html",
+  "public": true,
+  "pathname": "/blog/dynamic-sitemaps",
+  "src": "<html><head><title>My Blog Post</title></head><body>...</body></html>",
+  "modified": { on: "2026-07-19T08:30:00Z" }
+};
+
+await check({
+  file: fileContext,
+  host: "https://example.com",
+  crud: yourCrudDatabaseInstance
+});
+```
+
+---
+
+## How it Works
+
+1. **Eligibility Filter:** The module checks structural requirements (such as content type, public access flags, absence of `noindex` directives, and valid `<title>` nodes).
+2. **Freshness Assessment:** The target's change vector is cross-referenced against saved records. If no updates are required, execution exits early to reduce unnecessary I/O.
+3. **DOM Content Extraction:** For valid HTML documents, the layout engine parses targeted media assets marked for sitemap ingestion.
+4. **Sharding Verification:** The engine reads the root index (`sitemap.xml`) to locate corresponding media buckets. If a sitemap approaches Google's 50,000 URL limit or MongoDB's 15MB document limit, a new sitemap shard is automatically created.
+5. **XML Serialization:** Encodes structural characters and writes updated sitemap data back through your configured `crud` transport.
+
+---
+
+## HTML Schema Overrides
+
+You can explicitly override calculated priorities, change frequencies, or extract media nodes directly from your frontend markup.
+
+### Meta Specifications
+
+* **Exclude Page:** `<meta name="robots" content="noindex">`
+* **Custom Crawling Priority:** `<meta name="sitemap-priority" content="0.9">`
+* **Custom Change Frequency:** `<meta name="sitemap-changefreq" content="weekly">`
+
+### Extended Media Node Extractors
+
+Simply mark target elements with `sitemap="true"` to automatically include them in media sitemaps:
 
 ```html
-<script src="https://cdn.cocreate.app/sitemap/latest/CoCreate-sitemap.min.js"></script>
+<!-- Automated Image Mapping -->
+<img src="/assets/hero.jpg"
+     sitemap="true"
+     title="Hero View"
+     alt="Main Dashboard Profile"
+     sitemap-geo-location="New York, NY" />
+
+<!-- Automated Video Mapping -->
+<video src="/media/explainer.mp4"
+       sitemap="true"
+       title="Product Walkthrough"
+       poster="/thumbs/explainer.jpg"
+       description="A complete system overview"
+       sitemap-duration="180" />
 ```
 
-```html
-<script src="https://cdn.cocreate.app/sitemap/latest/CoCreate-sitemap.min.css"></script>
-```
+---
 
-## NPM
+## Announcements
 
-```shell
-$ npm i @cocreate/sitemap
-```
+All updates, protocol revisions, and performance improvements are documented in our `CHANGELOG.md` and on the [CoCreate Sitemap GitHub Releases](https://github.com/CoCreate-app/CoCreate-sitemap/releases) page.
 
-## yarn
+---
 
-```shell
-$ yarn install @cocreate/sitemap
-```
+## Roadmap
 
-# Table of Contents
+If you are interested in the future direction of this project, please take a look at our open issues and pull requests on the repository. We welcome community input on scaling indexing strategies and improving sitemap generation performance.
 
--   [Table of Contents](#table-of-contents)
--   [Announcements](#announcements)
--   [Roadmap](#roadmap)
--   [How to Contribute](#how-to-contribute)
--   [About](#about)
--   [License](#license)
+---
 
-<a name="announcements"></a>
+## How to Contribute
 
-# Announcements
+We encourage contribution to our libraries (you might even score some nifty swag), please see our [CONTRIBUTING.md](https://github.com/CoCreate-app/CoCreate-sitemap/blob/master/CONTRIBUTING.md) guide for details. If you encounter any bugs or wish to make feature requests, please submit an issue on our [GitHub Issues](https://github.com/CoCreate-app/CoCreate-sitemap/issues) tracker. We want this library to be community-driven, and CoCreate-led. We need your help to realize this goal.
 
-All updates to this library are documented in our [CHANGELOG](https://github.com/CoCreate-app/CoCreate-sitemap/blob/master/CHANGELOG.md) and [releases](https://github.com/CoCreate-app/CoCreate-sitemap/releases). You may also subscribe to email for releases and breaking changes.
+For broader system configurations and API guides, please visit our [CoCreate Sitemap Documentation](https://cocreatejs.com/docs/sitemap).
 
-<a name="roadmap"></a>
+---
 
-# Roadmap
+## About
 
-If you are interested in the future direction of this project, please take a look at our open [issues](https://github.com/CoCreate-app/CoCreate-sitemap/issues) and [pull requests](https://github.com/CoCreate-app/CoCreate-sitemap/pulls). We would love to hear your feedback.
+`@cocreate/sitemap` is designed, built, and supported by the CoCreate Developer Experience Team.
 
-<a name="about"></a>
+> [!NOTE]
+> Please contact the Developer Experience Team via [GitHub Discussions](https://github.com/CoCreate-app/CoCreate-sitemap/discussions) or join our Discord community for questions about sitemap generation, indexing, or deployment.
 
-# About
+`@cocreate/sitemap` is maintained and funded by CoCreate. The names and logos for CoCreate are trademarks of CoCreate, LLC.
 
-CoCreate-sitemap is guided and supported by the CoCreate Developer Experience Team.
+---
 
-Please Email the Developer Experience Team [here](mailto:develop@cocreate.app) in case of any queries.
-
-CoCreate-sitemap is maintained and funded by CoCreate. The names and logos for CoCreate are trademarks of CoCreate, LLC.
-
-<a name="contribute"></a>
-
-# How to Contribute
-
-We encourage contribution to our libraries (you might even score some nifty swag), please see our [CONTRIBUTING](https://github.com/CoCreate-app/CoCreate-sitemap/blob/master/CONTRIBUTING.md) guide for details.
-
-We want this library to be community-driven, and CoCreate led. We need your help to realize this goal. To help make sure we are building the right things in the right order, we ask that you create [issues](https://github.com/CoCreate-app/CoCreate-sitemap/issues) and [pull requests](https://github.com/CoCreate-app/CoCreate-sitemap/pulls) or merely upvote or comment on existing issues or pull requests.
-
-We appreciate your continued support, thank you!
-
-<a name="license"></a>
-
-# License
+## License
 
 This software is dual-licensed under the GNU Affero General Public License version 3 (AGPLv3) and a commercial license.
 
--   **Open Source Use**: For open-source projects and non-commercial use, this software is available under the AGPLv3. The AGPLv3 allows you to freely use, modify, and distribute this software, provided that all modifications and derivative works are also licensed under the AGPLv3. For the full license text, see the [LICENSE file](https://github.com/CoCreate-app/CoCreate-sitemap/blob/master/LICENSE).
-
--   **Commercial Use**: For-profit companies and individuals intending to use this software for commercial purposes must obtain a commercial license. The commercial license is available when you sign up for an API key on our [website](https://cocreate.app). This license permits proprietary use and modification of the software without the copyleft requirements of the AGPLv3. It is ideal for integrating this software into proprietary commercial products and applications.
-
-If you have not purchased a commercial license and intend to use this software for commercial purposes, you are required to sign up for an API key on our website.
+* **Open Source Use:** For open-source projects and non-commercial use, this software is available under the AGPLv3. For the full license text, see the LICENSE file.
+* **Commercial Use:** For-profit companies and individuals intending to use this software for commercial purposes must obtain a commercial license. The commercial license is available when you sign up for an API key on our website.

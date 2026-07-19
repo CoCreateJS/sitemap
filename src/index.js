@@ -56,11 +56,11 @@ async function updateSitemap({ file, host, crud }) {
         let { mainSitemap, sitemap } = await getSitemap({ file, host, crud });
 
         if (file.pathname) {
-            // Perform regex search starting at the pathname
-            const regexPattern = `<url>\\s*<loc>.*?${file.pathname.replace(
-                /[.*+?^${}()|[\]\\]/g,
-                "\\$&"
-            )}.*?</loc>[\\s\\S]*?</url>`;
+            // Escapes regular expression special characters safely
+            const escapedPathname = file.pathname.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+            
+            // Matches path blocks whether they start with templates, protocols, or raw paths
+            const regexPattern = `<url>\\s*<loc>\\s*(?:https?:)?\\/?\\/?(?:\\{\\{\\$host\\}\\})?.*?${escapedPathname}\\s*<\\/loc>[\\s\\S]*?<\\/url>`;
             const match = sitemap.src.match(new RegExp(regexPattern));
 
             if (match) {
@@ -142,7 +142,7 @@ function createEntry(file) {
 
                 for (const nestedKey of Object.keys(value[i])) {
                     let nestedValue = value[i][nestedKey];
-                    // Handle nested objects
+                    // Handle nested objects safely
                     if (
                         typeof nestedValue === "object" &&
                         nestedValue !== null &&
@@ -151,7 +151,7 @@ function createEntry(file) {
                         entry += `\t\t\t<${key}:${nestedKey}>\n`;
                         for (const subKey of Object.keys(nestedValue)) {
                             const subValue = nestedValue[subKey];
-                            entry += `\t\t\t\t<${key}:${subKey}>${subValue}</${key}:${subKey}>\n`;
+                            entry += `\t\t\t\t<${key}:${subKey}>${encodeXML(subValue)}</${key}:${subKey}>\n`;
                         }
                         entry += `\t\t\t</${key}:${nestedKey}>\n`;
                     } else {
@@ -279,7 +279,7 @@ async function getSitemap({ file, host, crud }) {
 
     // Check if a match is found
     if (!match) {
-        const indexEntry = `\t<sitemap>\n\t\t<loc>{{$host}}${sitemap.pathname}</loc>\n</sitemap>`;
+        const indexEntry = `\t<sitemap>\n\t\t<loc>{{$host}}${sitemap.pathname}</loc>\n\t</sitemap>`;
         mainSitemap.src = mainSitemap.src.replace(
             "</sitemapindex>",
             `${indexEntry}\n</sitemapindex>`
@@ -365,7 +365,7 @@ async function getLastSitemapIndex(mainSitemap, filename) {
     } catch (err) {
         console.error(
             `Error determining next sitemap index for ${filename}:`,
-            `err`
+            err
         );
         return null;
     }
@@ -383,8 +383,8 @@ function checkSitemapXml(sitemap) {
         const fileSizeInBytes = Buffer.byteLength(sitemap, "utf8");
         const fileSizeInMB = fileSizeInBytes / (1024 * 1024);
 
-        // Check if the file size exceeds either the 50MB limit or the MongoDB 16MB limit
-        if (fileSizeInMB >= 50 || fileSizeInMB >= 15) return false;
+        // Check if the file size exceeds MongoDB 16MB document boundary limit safely
+        if (fileSizeInMB >= 15) return false;
 
         return true;
     } catch (err) {
@@ -435,7 +435,6 @@ function parseHtml(file) {
         } else if (entries[i].tagName === "VIDEO") {
             type = "video";
             query = "content_loc";
-            // FIXED: Using standard DOM query selector `.getAttribute("src")` instead of property `.src`
             entryObject.content_loc = entries[i].getAttribute("src");
             entryObject.title =
                 entries[i].getAttribute("sitemap-title") ||
@@ -524,11 +523,11 @@ function parseHtml(file) {
 }
 
 function encodeXML(str) {
-    if (str)
-        return str
-            .replace(/&/g, "&amp;")
-            .replace(/</g, "&lt;")
-            .replace(/>/g, "&gt;")
-            .replace(/"/g, "&quot;")
-            .replace(/'/g, "&apos;");
+    if (str === null || str === undefined) return "";
+    return String(str)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&apos;");
 }

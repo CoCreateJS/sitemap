@@ -1,18 +1,20 @@
 {
   "name": "@cocreate/sitemap",
   "version": "1.6.3",
-  "description": "A simple sitemap component in vanilla javascript. Easily configured using HTML5 data-attributes and/or JavaScript API.",
+  "description": "Automated stateless XML sitemap engine with multi-format media extraction (Images, Videos, Google News) and dynamic data-sharding for scalable document architectures.",
   "keywords": [
-    "sitemap",
-    "low-code",
-    "realtime",
-    "realtime-framework",
-    "collaboration",
-    "shared-editing",
-    "html5-framework",
-    "javascript-framework"
+    "sitemap-generator",
+    "xml-sitemap",
+    "seo-automation",
+    "sitemap-sharding",
+    "google-news-sitemap",
+    "video-sitemap",
+    "image-sitemap",
+    "html-parsing",
+    "stateless-utility",
+    "cocreate-module"
   ],
-  "publishConfig": {
+    "publishConfig": {
     "access": "public"
   },
   "scripts": {
