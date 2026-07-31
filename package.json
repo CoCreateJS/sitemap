@@ -1,6 +1,6 @@
 {
   "name": "@cocreate/sitemap",
-  "version": "1.9.1",
+  "version": "1.10.0",
   "description": "Automated stateless XML sitemap engine with multi-format media extraction (Images, Videos, Google News) and dynamic data-sharding for scalable document architectures.",
   "keywords": [
     "sitemap-generator",
