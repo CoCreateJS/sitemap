@@ -112,7 +112,7 @@ Simply mark target elements with `sitemap="true"` to automatically include them 
 
 ## Announcements
 
-All updates, protocol revisions, and performance improvements are documented in our `CHANGELOG.md` and on the [CoCreate Sitemap GitHub Releases](https://github.com/CoCreate-app/CoCreate-sitemap/releases) page.
+All updates, protocol revisions, and performance improvements are documented in our `CHANGELOG.md` and on the [CoCreate Sitemap GitHub Releases](https://github.com/CoCreateJS/CoCreate-sitemap/releases) page.
 
 ---
 
@@ -124,7 +124,7 @@ If you are interested in the future direction of this project, please take a loo
 
 ## How to Contribute
 
-We encourage contribution to our libraries (you might even score some nifty swag), please see our [CONTRIBUTING.md](https://github.com/CoCreate-app/CoCreate-sitemap/blob/master/CONTRIBUTING.md) guide for details. If you encounter any bugs or wish to make feature requests, please submit an issue on our [GitHub Issues](https://github.com/CoCreate-app/CoCreate-sitemap/issues) tracker. We want this library to be community-driven, and CoCreate-led. We need your help to realize this goal.
+We encourage contribution to our libraries (you might even score some nifty swag), please see our [CONTRIBUTING.md](https://github.com/CoCreateJS/CoCreate-sitemap/blob/master/CONTRIBUTING.md) guide for details. If you encounter any bugs or wish to make feature requests, please submit an issue on our [GitHub Issues](https://github.com/CoCreateJS/CoCreate-sitemap/issues) tracker. We want this library to be community-driven, and CoCreate-led. We need your help to realize this goal.
 
 For broader system configurations and API guides, please visit our [CoCreate Sitemap Documentation](https://cocreatejs.com/docs/sitemap).
 
@@ -135,7 +135,7 @@ For broader system configurations and API guides, please visit our [CoCreate Sit
 `@cocreate/sitemap` is designed, built, and supported by the CoCreate Developer Experience Team.
 
 > [!NOTE]
-> Please contact the Developer Experience Team via [GitHub Discussions](https://github.com/CoCreate-app/CoCreate-sitemap/discussions) or join our Discord community for questions about sitemap generation, indexing, or deployment.
+> Please contact the Developer Experience Team via [GitHub Discussions](https://github.com/CoCreateJS/CoCreate-sitemap/discussions) or join our Discord community for questions about sitemap generation, indexing, or deployment.
 
 `@cocreate/sitemap` is maintained and funded by CoCreate. The names and logos for CoCreate are trademarks of CoCreate, LLC.
 
