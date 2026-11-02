@@ -235,152 +235,133 @@ export function buildSitemapXml(files = [], domain = "") {
 /**
  *
  * @name alt
- * @kind member
- * @attribute
+ * @kind attribute
  * @environment server
  */
 
 /**
  *
  * @name content
- * @kind member
- * @attribute
+ * @kind attribute
  * @environment server
  */
 
 /**
  *
  * @name description
- * @kind member
- * @attribute
+ * @kind attribute
  * @environment server
  */
 
 /**
  *
  * @name lang
- * @kind member
- * @attribute
+ * @kind attribute
  * @environment server
  */
 
 /**
  *
  * @name name
- * @kind member
- * @attribute
+ * @kind attribute
  * @environment server
  */
 
 /**
  *
  * @name poster
- * @kind member
- * @attribute
+ * @kind attribute
  * @environment server
  */
 
 /**
  *
  * @name sitemap-caption
- * @kind member
- * @attribute
+ * @kind attribute
  * @environment server
  */
 
 /**
  *
  * @name sitemap-description
- * @kind member
- * @attribute
+ * @kind attribute
  * @environment server
  */
 
 /**
  *
  * @name sitemap-duration
- * @kind member
- * @attribute
+ * @kind attribute
  * @environment server
  */
 
 /**
  *
  * @name sitemap-genres
- * @kind member
- * @attribute
+ * @kind attribute
  * @environment server
  */
 
 /**
  *
  * @name sitemap-geo-location
- * @kind member
- * @attribute
+ * @kind attribute
  * @environment server
  */
 
 /**
  *
  * @name sitemap-keywords
- * @kind member
- * @attribute
+ * @kind attribute
  * @environment server
  */
 
 /**
  *
  * @name sitemap-publication-date
- * @kind member
- * @attribute
+ * @kind attribute
  * @environment server
  */
 
 /**
  *
  * @name sitemap-publication-language
- * @kind member
- * @attribute
+ * @kind attribute
  * @environment server
  */
 
 /**
  *
  * @name sitemap-publication-name
- * @kind member
- * @attribute
+ * @kind attribute
  * @environment server
  */
 
 /**
  *
  * @name sitemap-thumbnail
- * @kind member
- * @attribute
+ * @kind attribute
  * @environment server
  */
 
 /**
  *
  * @name sitemap-title
- * @kind member
- * @attribute
+ * @kind attribute
  * @environment server
  */
 
 /**
  *
  * @name src
- * @kind member
- * @attribute
+ * @kind attribute
  * @environment server
  */
 
 /**
  *
  * @name title
- * @kind member
- * @attribute
+ * @kind attribute
  * @environment server
  */
 
