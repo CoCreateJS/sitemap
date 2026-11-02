@@ -1,3 +1,23 @@
+# [1.7.0](https://github.com/CoCreateJS/sitemap/compare/v1.6.3...v1.7.0) (2026-11-02)
+
+
+### Bug Fixes
+
+* add Deno specific entries to .gitignore ([54141d9](https://github.com/CoCreateJS/sitemap/commit/54141d9f522fb5a1adc49309e58ebd96f7f4f943))
+* bump [@cocreate](https://github.com/cocreate) dependencies ([04866b9](https://github.com/CoCreateJS/sitemap/commit/04866b962ae384f4194d846a705b3277eadd861b))
+* bump versions ([0b2775c](https://github.com/CoCreateJS/sitemap/commit/0b2775c6bafd537fafe524754427cf54706ea7e9))
+* bump versions ([71dc0ff](https://github.com/CoCreateJS/sitemap/commit/71dc0ff3fa74a4e97a2700e67ebeeffc095685c9))
+* remove trailing slash from node_modules entry in .gitignore ([33008f6](https://github.com/CoCreateJS/sitemap/commit/33008f666fa2d3b5cf44b595bd7054ff770b0303))
+* update git url ([325bc4d](https://github.com/CoCreateJS/sitemap/commit/325bc4d92ccfb59d50dd05066f56d1c52eb5d4af))
+* update GitHub Actions to use latest versions and sync package.json description ([8def87a](https://github.com/CoCreateJS/sitemap/commit/8def87a370e270b69046466056e7825f3fc2ba5f))
+
+
+### Features
+
+* bump all dependencies ([31a4c01](https://github.com/CoCreateJS/sitemap/commit/31a4c012068861e2eb466c8ac300ad0d3342f1d1))
+* bumped all dependency versions ([6bdcb4e](https://github.com/CoCreateJS/sitemap/commit/6bdcb4ec8e021619f55eedfa39aa0139d36032ad))
+* replace node-html-parser with @cocreate/utils for HTML parsing and sitemap generation ([341d3ac](https://github.com/CoCreateJS/sitemap/commit/341d3acbe7346f556a57611967b5652ec7048f9a))
+
 ## [1.6.3](https://github.com/CoCreateJS/sitemap/compare/v1.6.2...v1.6.3) (2026-07-19)
 
 
