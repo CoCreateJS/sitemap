@@ -387,6 +387,6 @@ export function buildSitemapXml(files = [], domain = "") {
 /**
  * Server-side XML sitemap engine with image, video, and news metadata extraction and dynamic sitemap sharding.
  *
- * @module server-sitemap
+ * @module sitemap
  * @environment server
  */

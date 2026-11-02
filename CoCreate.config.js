@@ -8,8 +8,8 @@ module.exports = {
             "object": {
                 "_id": "60145dc49f64ba1680b86693",
                 "name": "index.html",
-                "path": "/docs/server-sitemap",
-                "pathname": "/docs/server-sitemap/index.html",
+                "path": "/docs/sitemap",
+                "pathname": "/docs/sitemap/index.html",
                 "src": "{{./docs/index.html}}",
                 "host": [
                     "CoCreateJS.com",

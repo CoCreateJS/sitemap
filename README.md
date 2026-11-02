@@ -1,4 +1,4 @@
-# CoCreate-server-sitemap
+# CoCreate-sitemap
 
 A high-performance, stateless, and functional JavaScript utility for automated XML sitemap generation and management. Engineered to run seamlessly across clustered environments, it dynamically builds, updates, and shards compliant sitemaps—including standard URLs, Images, Videos, and Google News metadata—by evaluating data modifications and parsing live HTML content.
 
@@ -33,7 +33,7 @@ A high-performance, stateless, and functional JavaScript utility for automated X
 ## Installation
 
 ```bash
-npm install @cocreate/server-sitemap
+npm install @cocreate/sitemap
 ```
 
 > [!NOTE]
@@ -48,7 +48,7 @@ npm install @cocreate/server-sitemap
 Inject your runtime context (`file`, `host`, and your decoupled `crud` database engine) into the stateless `check` entry point:
 
 ```javascript
-import { check } from '@cocreate/server-sitemap';
+import { check } from '@cocreate/sitemap';
 
 const fileContext = {
   "content-type": "text/html",
@@ -112,7 +112,7 @@ Simply mark target elements with `sitemap="true"` to automatically include them 
 
 ## Announcements
 
-All updates, protocol revisions, and performance improvements are documented in our `CHANGELOG.md` and on the [CoCreate Server Sitemap GitHub Releases](https://github.com/CoCreateJS/CoCreate-server-sitemap/releases) page.
+All updates, protocol revisions, and performance improvements are documented in our `CHANGELOG.md` and on the [CoCreate Server Sitemap GitHub Releases](https://github.com/CoCreateJS/sitemap/releases) page.
 
 ---
 
@@ -124,20 +124,20 @@ If you are interested in the future direction of this project, please take a loo
 
 ## How to Contribute
 
-We encourage contribution to our libraries (you might even score some nifty swag), please see our [CONTRIBUTING.md](https://github.com/CoCreateJS/CoCreate-server-sitemap/blob/master/CONTRIBUTING.md) guide for details. If you encounter any bugs or wish to make feature requests, please submit an issue on our [GitHub Issues](https://github.com/CoCreateJS/CoCreate-server-sitemap/issues) tracker. We want this library to be community-driven, and CoCreate-led. We need your help to realize this goal.
+We encourage contribution to our libraries (you might even score some nifty swag), please see our [CONTRIBUTING.md](https://github.com/CoCreateJS/sitemap/blob/master/CONTRIBUTING.md) guide for details. If you encounter any bugs or wish to make feature requests, please submit an issue on our [GitHub Issues](https://github.com/CoCreateJS/sitemap/issues) tracker. We want this library to be community-driven, and CoCreate-led. We need your help to realize this goal.
 
-For broader system configurations and API guides, please visit our [CoCreate Server Sitemap Documentation](https://cocreatejs.com/docs/server-sitemap).
+For broader system configurations and API guides, please visit our [CoCreate Server Sitemap Documentation](https://cocreatejs.com/docs/sitemap).
 
 ---
 
 ## About
 
-`@cocreate/server-sitemap` is designed, built, and supported by the CoCreate Developer Experience Team.
+`@cocreate/sitemap` is designed, built, and supported by the CoCreate Developer Experience Team.
 
 > [!NOTE]
-> Please contact the Developer Experience Team via [GitHub Discussions](https://github.com/CoCreateJS/CoCreate-server-sitemap/discussions) or join our Discord community for questions about sitemap generation, indexing, or deployment.
+> Please contact the Developer Experience Team via [GitHub Discussions](https://github.com/CoCreateJS/sitemap/discussions) or join our Discord community for questions about sitemap generation, indexing, or deployment.
 
-`@cocreate/server-sitemap` is maintained and funded by CoCreate. The names and logos for CoCreate are trademarks of CoCreate, LLC.
+`@cocreate/sitemap` is maintained and funded by CoCreate. The names and logos for CoCreate are trademarks of CoCreate, LLC.
 
 ---
 
