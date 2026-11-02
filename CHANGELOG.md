@@ -1,3 +1,15 @@
+# [2.0.0](https://github.com/CoCreateJS/sitemap/compare/v1.7.0...v2.0.0) (2026-11-02)
+
+
+### chore
+
+* record package identity migration as breaking ([4e67791](https://github.com/CoCreateJS/sitemap/commit/4e6779156b0ce5b22884486820fc0cef6ec7e03e))
+
+
+### BREAKING CHANGES
+
+* Consumers must install @cocreate/sitemap and use the renamed CoCreateJS repository identity; the previous package and repository identities are no longer supported.
+
 # [1.7.0](https://github.com/CoCreateJS/sitemap/compare/v1.6.3...v1.7.0) (2026-11-02)
 
 
